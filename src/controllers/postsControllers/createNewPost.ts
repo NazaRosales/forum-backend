@@ -18,8 +18,7 @@ const createNewPost = async (
 
     const createUserPostsQuery =
       "INSERT INTO user_posts (user_id, post_id) VALUES ($1, $2)";
-    const result = await pool.query(createUserPostsQuery, [userId, postId]);
-    console.log(result);
+    await pool.query(createUserPostsQuery, [userId, postId]);
     return res.status(200).json({ message: "Created post" });
   } catch (error) {
     console.log(`Error creating post: ${error}`);
