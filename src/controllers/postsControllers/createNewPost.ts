@@ -7,7 +7,7 @@ const createNewPost = async (
 ): Promise<Response> => {
   try {
     const { userId, postText } = req.body;
-    if (!userId || !postText.length) {
+    if (!userId || !postText) {
       return res
         .status(409)
         .json({ message: "User ID and Post text are required." });

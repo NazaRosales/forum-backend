@@ -5,6 +5,7 @@ const createTables = async (): Promise<void> => {
      id SERIAL PRIMARY KEY,
      userName VARCHAR(100),
      email VARCHAR(100) UNIQUE NOT NULL,
+     role VARCHAR(15) NOT NULL,
      password VARCHAR(100) NOT NULL
     );`;
   const createPostsTable: string = `CREATE TABLE IF NOT EXISTS posts(
