@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { loggingAuth } from "../../helpers/authServices.js";
 import pool from "../../database/db.js";
 import { tokenSign } from "../../helpers/tokensServices.js";
-import { User } from "../../models/userModel.js";
+import { User } from "../../models/models.js";
 
 const logginAuth = async (req: Request, res: Response): Promise<Response> => {
   try {

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import pool from "../database/db.js";
-import { User } from "../models/userModel.js";
+import { User } from "../models/models.js";
 
 const verifyRole = (role: string) => {
   return async (
