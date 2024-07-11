@@ -11,7 +11,6 @@ const verifyUser = (
   if (!tokenVerify) {
     return res.status(401).json({ message: "Unauthorized" });
   }
-  console.log(tokenVerify);
   next();
 };
 export default verifyUser;

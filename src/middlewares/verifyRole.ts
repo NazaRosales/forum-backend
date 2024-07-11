@@ -9,8 +9,14 @@ const verifyRole = (role: string) => {
     next: NextFunction
   ): Promise<void | Response> => {
     const { userId } = req.body;
+    if (!userId) {
+      return res.status(400).json({ message: "User ID is required" });
+    }
     const getUserQuery = "SELECT * FROM users WHERE id = $1";
     const resultGetUser = await pool.query(getUserQuery, [userId]);
+    if (!resultGetUser.rowCount) {
+      return res.status(404).json({ message: "User not found" });
+    }
     const user: User = resultGetUser.rows[0];
     if (user.role === role) {
       next();

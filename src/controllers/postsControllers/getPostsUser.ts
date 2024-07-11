@@ -3,7 +3,7 @@ import pool from "../../database/db.js";
 
 const getPostsUser = async (req: Request, res: Response): Promise<Response> => {
   try {
-    const { userId } = req.query;
+    const { userId } = req.body;
 
     if (!userId) {
       return res.status(400).json({ message: "User ID is required." });
@@ -13,6 +13,11 @@ const getPostsUser = async (req: Request, res: Response): Promise<Response> => {
     type Row = { user_id: number; post_id: number };
     type Rows = Row[];
     const resultTable = await pool.query(getUserPosts, [userId]);
+
+    if (!resultTable.rowCount) {
+      return res.status(200).json({ message: "This user has no posts." });
+    }
+
     const rows: Rows = resultTable.rows;
 
     const postsPromises = rows.map(async (row: Row) => {
