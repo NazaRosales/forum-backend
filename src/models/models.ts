@@ -1,22 +1,26 @@
 type Role = "user" | "admin";
 type User = {
   id: number;
-  username: string;
+  name: string;
+  lastName: string;
+  userName: string;
   email: string;
   password: string;
+  profileImage: string;
   role: Role;
   createdAt: Date;
   updatedAt: Date;
 };
 type Post = {
   id: number;
-  text: string;
+  title: string;
+  body: string;
   createdAt: Date;
   updatedAt: Date;
 };
 type Comment = {
   id: number;
-  text: string;
+  body: string;
   createdAt: Date;
   updatedAt: Date;
 };
