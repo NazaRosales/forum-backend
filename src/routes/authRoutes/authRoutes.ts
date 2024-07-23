@@ -4,6 +4,6 @@ import logginAuth from "../../controllers/authControllers/logginAuth.js";
 const authRoutes = express.Router();
 
 authRoutes.post("/register", registerUser);
-authRoutes.get("/loggin", logginAuth);
+authRoutes.post("/loggin", logginAuth);
 
 export default authRoutes;
